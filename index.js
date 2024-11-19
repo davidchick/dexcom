@@ -55,7 +55,7 @@ console.log(`${dexEnvs.sandbox}/v2/oauth2/token`);
 
 if (myCode) {
 
-    /* const resp = fetch(
+    const resp = fetch(
         `${dexEnvs.sandbox}/v2/oauth2/token`,
         {
         method: 'POST',
@@ -66,8 +66,8 @@ if (myCode) {
         }
     );
   
-    const data = resp.text(); */
-    //console.log(data);
+    const data = resp.text();
+    console.log(data);
 
     console.log(new URLSearchParams(formData).toString());
 
