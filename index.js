@@ -57,6 +57,7 @@ if (myCode) {
     const resp = fetch(`${dexEnvs.sandbox}/v2/oauth2/token`,
         {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
