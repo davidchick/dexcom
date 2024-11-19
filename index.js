@@ -52,11 +52,7 @@ const formData = {
 };
 
 const formKeys = Object.getOwnPropertyNames(formData);
-let formQuery = '';
-
-formKeys.forEach(element => {
-    formQuery = `${formQuery}${element}=${formData[element]}&`;
-});
+let formQuery = `grant_type=authorization_code&code=${myCode}&redirect_uri=${myAppInfo.redirect_uri}&client_id=${myAppInfo.client_id}&client_secret=${myAppInfo.client_secret}`;
 
 if (myCode) {
 
@@ -69,7 +65,7 @@ if (myCode) {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: formQuery,
+            body: formQuery
             }
         ); 
   
