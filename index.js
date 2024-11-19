@@ -65,7 +65,7 @@ if (myCode) {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: formQuery
+            body: JSON.stringify(formData)
             }
         ); 
   
@@ -75,6 +75,7 @@ if (myCode) {
         console.log(formData);
         console.log(new URLSearchParams(formData).toString());
         console.log(formQuery);
+        console.log(JSON.stringify(formData));
 
     }
 
