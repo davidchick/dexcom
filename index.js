@@ -61,11 +61,11 @@ if (myCode) {
         const resp = await fetch(`${dexEnvs.sandbox}/v2/oauth2/token`,
             {
             method: 'POST',
-            mode: 'no-cors',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: JSON.stringify(formData)
+            body: formQuery
             }
         ); 
   
