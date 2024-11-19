@@ -41,7 +41,7 @@ const callDexcom = function (e) {
 
 dexButton.addEventListener('click', e => {callDexcom()});
 
-console.log(myCode);
+//console.log(myCode);
 
 const formData = {
     grant_type: 'authorization_code',
@@ -51,25 +51,43 @@ const formData = {
     client_secret: myAppInfo.client_secret,
 };
 
+const formKeys = Object.getOwnPropertyNames(formData);
+let formQuery = '';
+
+formKeys.forEach(element => {
+    formQuery = `${formQuery}${element}=${formData[element]}&`;
+});
 
 if (myCode) {
 
-    const resp = fetch(`${dexEnvs.sandbox}/v2/oauth2/token`,
-        {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams(formData).toString(),
-        }
-    ); 
-  
-    //const data = resp.text();
-    //console.log(data);
+    async function f1() {
 
-    console.log(`${dexEnvs.sandbox}/v2/oauth2/token`);
-    console.log(new URLSearchParams(formData).toString());
+        const resp = await fetch(`${dexEnvs.sandbox}/v2/oauth2/token`,
+            {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formQuery,
+            }
+        ); 
+  
+        const data = await resp.text();
+        console.log(data);
+
+        console.log(formData);
+        console.log(new URLSearchParams(formData).toString());
+        console.log(formQuery);
+
+    }
+
+    f1();
+
+ 
+    //console.log(resp);
+    //console.log(`${dexEnvs.sandbox}/v2/oauth2/token`);
+    //console.log(new URLSearchParams(formData).toString());
 
 };
 
