@@ -53,7 +53,7 @@ const formData = {
 
 console.log(`${dexEnvs.sandbox}/v2/oauth2/token`);
 
-if (code) {
+if (myCode) {
 
     const resp = fetch(
         `${dexEnvs.sandbox}/v2/oauth2/token`,
