@@ -51,12 +51,10 @@ const formData = {
     client_secret: myAppInfo.client_secret,
 };
 
-console.log(`${dexEnvs.sandbox}/v2/oauth2/token`);
 
 if (myCode) {
 
-    const resp = fetch(
-        `${dexEnvs.sandbox}/v2/oauth2/token`,
+    const resp = fetch(`${dexEnvs.sandbox}/v2/oauth2/token`,
         {
         method: 'POST',
         headers: {
@@ -64,11 +62,12 @@ if (myCode) {
         },
         body: new URLSearchParams(formData).toString(),
         }
-    );
+    ); 
   
-    const data = resp.text();
-    console.log(data);
+    //const data = resp.text();
+    //console.log(data);
 
+    console.log(`${dexEnvs.sandbox}/v2/oauth2/token`);
     console.log(new URLSearchParams(formData).toString());
 
 };
