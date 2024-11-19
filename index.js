@@ -48,23 +48,25 @@ const formData = {
     code: myCode,
     redirect_uri: myAppInfo.redirect_uri,
     client_id: myAppInfo.client_id,
-    client_secret: myAppInfo.client_secret
+    client_secret: myAppInfo.client_secret,
 };
+
+console.log(`${dexEnvs.sandbox}/v2/oauth2/token`);
 
 if (counter) {
 
-    const resp = await fetch(
+    const resp = fetch(
         `${dexEnvs.sandbox}/v2/oauth2/token`,
         {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: new URLSearchParams(formData).toString()
+        body: new URLSearchParams(formData).toString(),
         }
     );
   
-    const data = await resp.text();
+    const data = resp.text();
     console.log(data);
 
 };
